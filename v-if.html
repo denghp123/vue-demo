@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if演示</title>
+    <style type="text/css">
+        table,th,td{
+            border: red 1px solid
+        }
+        table{
+            height: 500px;
+            width: 600px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="show=!show">点我试试</button>
+    <table >
+        <tr>
+            <th >编号</th>
+            <th >姓名</th>
+            <th >性别</th>
+            <th >年龄</th>
+        </tr>
+        <tr v-for="(user,i) in users" :key="i" v-if="i%2===0" style="background-color:red;">
+            <td>{{i}}</td>
+            <td >{{user.name}}</td>
+            <td >{{user.gender}}</td>
+            <td >{{user.age}}</td>
+        </tr>
+        <tr   v-else style="background-color:blue;">
+            <td>{{i}}</td>
+            <td >{{user.name}}</td>
+            <td >{{user.gender}}</td>
+            <td >{{user.age}}</td>
+        </tr>
+
+    </table>
+    <hr>
+    <ul v-if="show">
+        <li  v-for="user in users[0]" >{{user}}</li>
+    </ul>
+    <hr>
+    <ul v-show="show">
+        <li v-for="i in 5">{{i}}</li>
+    </ul>
+
+
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+
+    const app = new Vue({
+        el:"#app",
+        data:{
+            users:[
+                {name:'柳岩', gender:'女', age: 21},
+                {name:'虎哥', gender:'男', age: 30},
+                {name:'范冰冰', gender:'女', age: 24},
+                {name:'刘亦菲', gender:'女', age: 18},
+                {name:'古力娜扎', gender:'女', age: 25}
+            ],
+            show:false
+
+        }
+
+    });
+</script>
+</body>
+</html>

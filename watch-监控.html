@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+</head>
+<body>
+<div id="app">
+    <!--用户名：<input type="text" v-model="name">-->
+    用户名：<input type="text" v-model="persion.name">
+    <button @click="persion.age++">+</button>
+    <h1>
+    我的名字是：{{persion.name}} <br>
+    我的名字是：{{persion.age}}
+    </h1>
+
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+
+    const app = new Vue({
+        el:"#app",
+        data:{
+           // name:""
+            persion:{
+                name:"",
+                age:21
+            }
+        },
+        watch:{
+          name(v){
+              console.log(v)
+          },
+            persion:{
+                deep:true, //深度监控
+              handler(v){
+
+                  console.log(v.name+":"+v.age)
+              }
+            }
+
+        }
+    });
+</script>
+</body>
+</html>

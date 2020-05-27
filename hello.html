@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+</head>
+<body>
+<div id="app">
+    <h1>{{name}} 非常帅! <br>
+  {{num}}位女神为其着迷！ <br>
+        {{p.name}}
+    </h1>
+    <input type="text" v-model="num">
+    <button @click="num++">+</button>
+    <button @click="handlerA">点我试试</button>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    const p =  {
+       name:"柳岩"
+    }
+    const app = new Vue({
+        el:"#app",
+        data:{
+            name:"胡歌",
+            num:1,
+            p
+        },
+        methods:{
+             handlerA () {
+                console.log("去你大爷的周杰伦！")
+            }
+        },
+        created() {
+            // this.name="李连杰"
+            setTimeout(()=>{
+                this.name="李连杰"
+            },2000)
+        },
+        beforeCreate() {
+            console.log(this)
+        }
+    });
+</script>
+</body>
+</html>

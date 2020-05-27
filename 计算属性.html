@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+</head>
+<body>
+<div id="app">
+    <h1>
+    我的生日是：{{day}}
+    </h1>
+
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+
+    const app = new Vue({
+        el:"#app",
+        data:{
+            birthday:1529032123201 // 毫秒值
+        },
+        computed:{
+             day() {
+                let day =new Date(this.birthday);
+                return day.getFullYear()+"年"+ (day.getMonth()+1)+"月"+day.getDay()+"日"
+             }
+        }
+    });
+</script>
+</body>
+</html>

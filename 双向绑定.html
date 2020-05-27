@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双向绑定</title>
+</head>
+<body>
+<div id="app">
+    <h1>
+        <span v-text="name">虎哥</span>
+         非常帅! <br>
+       {{num}}位女神为其着迷！
+    </h1>
+    <hr>
+    <h1> 传智博客开设了如下课程<br>
+        <input type="checkbox" value="java" v-model="lesson">java <br>
+        <input type="checkbox" value="pathon" v-model="lesson">pathon <br>
+        <input type="checkbox" value="php" v-model="lesson">php
+    </h1>
+    <h2>您已选择【{{lesson.join(",")}}】</h2>
+
+
+
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+
+    const app = new Vue({
+        el:"#app",
+        data:{
+            name:"胡歌",
+            num:1,
+            lesson:[]
+
+        }
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件冒泡，事件默认行为</title>
+
+</head>
+<body>
+
+<div id="div" style="background-color: blue;width: 500px;height: 500px;color: pink" @click="findElement('你点击了div')">
+    <!--@click.stop 的stop属性阻止事件冒泡-->
+<button @click.stop="findElement('你点击了btn')">点我试试</button>
+<!--@click.prevent 的prevent属性阻止事件默认行为-->
+    <a href="http://www.baidu.com" style="color: red" @click.prevent.stop="findElement('哈哈哈，你又上当了')">百度一下马上出来</a>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#div",
+        data:{
+
+        },
+        methods:{
+            findElement (msg) {
+                console.log(msg)
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
