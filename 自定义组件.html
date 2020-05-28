@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义组件开发</title>
+</head>
+<body>
+<div id="app" >
+ <h1>这是一个自定义组件</h1> <br>
+ <counter></counter>
+ <counter></counter>
+ <counter></counter>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="counter.js"></script>
+<script>
+    /*自定义组件*/
+    // const counter = {
+    //     template:"<button @click='count++'>你点击了我{{count}}次，我记住你了</button>",
+    //     data(){
+    //         return {
+    //             "count":0
+    //         }
+    //     }
+    // }
+    /*注册全局组件*/
+    // Vue.component("counter",counter);
+    const app = new Vue({
+        el:"#app",
+        /*定义局部组件*/
+        // components:{
+        //     counter
+        // }
+
+    })
+
+</script>
+
+
+</body>
+</html>
