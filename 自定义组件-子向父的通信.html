@@ -7,6 +7,7 @@
 <body>
 <div id="app"> <h1>这是一个计数器：{{num}}</h1> <br>
 <module  @plus="add" @reduce="reduce"></module>
+
 </div>
 
 <script src="node_modules/vue/dist/vue.js"></script>
@@ -23,7 +24,7 @@
         /*vue提供了一个内置的函数 this.$emit()来调用父组件绑定的函数*/
         methods:{
             myPlus(){
-                this.$emit('plus')
+                this.$emit('plus',{name:'张三',age:18})
             },
             myReduce(){
                 this.$emit('reduce')
@@ -44,8 +45,9 @@
         * 因此，需要修改就在父组件中操作完成
         * */
         methods:{
-            add(){
+            add(e){
              this.num++
+                console.log(e)
          }
          ,reduce(){
              this.num--
