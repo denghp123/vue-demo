@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父向子传递</title>
+</head>
+<body>
+<div id="app">
+    <h1>打个招呼 ：<br>
+    <me :name="name"></me>
+    </h1>
+
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    //自定义组件
+    const me = {
+        template: `<h5>大家好，我的名字叫{{name}}</h5>`,
+        data(){
+            return {
+               xinMing:'柳岩'
+            }
+        },
+        props:['name']    //通过props接收一个父组件传递过来的属性
+    }
+   //注册全局组件
+    Vue.component("me",me);
+
+    const app = new Vue({
+        el:"#app",
+        data:{
+            name:"吴彦祖"
+        }
+    })
+</script>
+</body>
+</html>

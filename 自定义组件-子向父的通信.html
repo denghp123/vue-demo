@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义组件，子向父的通信</title>
+</head>
+<body>
+<div id="app"> <h1>这是一个计数器：{{num}}</h1> <br>
+<module  @plus="add" @reduce="reduce"></module>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    /*自定义组件，并全局注册*/
+    Vue.component("module",{
+        template:`<div>
+                 <!--<button @click="count++">+</button>-->
+                 <!--<button @click="count&#45;&#45;">-</button>-->
+                 <button @click="myPlus">+</button>
+                 <button @click="myReduce">-</button>
+                   </div>`,
+        // props:['count'],
+        /*vue提供了一个内置的函数 this.$emit()来调用父组件绑定的函数*/
+        methods:{
+            myPlus(){
+                this.$emit('plus')
+            },
+            myReduce(){
+                this.$emit('reduce')
+            },
+        }
+    }
+
+    )
+
+    const app = new Vue({
+        el:"#app",
+        data:{
+            num:0,
+
+
+        },
+        /*子组件接收到父组件之后默认是不允许修改的
+        * 因此，需要修改就在父组件中操作完成
+        * */
+        methods:{
+            add(){
+             this.num++
+         }
+         ,reduce(){
+             this.num--
+            }
+        }
+    })
+</script>
+</body>
+</html>

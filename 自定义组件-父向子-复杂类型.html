@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父向子传递-复杂类型</title>
+</head>
+<body>
+<div id="app">
+    <h1>传智博客开设了如下课程：</h1> <br>
+    <items :emplaty="lessons"></items>
+
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+
+<script>
+    //自定义一个全局组件
+    const items = {
+        template:`<lu>
+        <li v-for="em in emplaty" :key="em.id">{{em.id}}:{{em.name}}</li>
+    </lu>`,
+        props:{
+            emplaty:{
+                type:Array,
+                default:[]
+            }
+        }
+
+    }
+
+    Vue.component("items",items);
+    const app  = new Vue({
+        el:"#app",
+        data:{
+            lessons:[
+                {id:1, name: 'java'},
+                {id:2, name: 'php'},
+                {id:3, name: 'ios'}]
+        }
+    })
+</script>
+
+
+</body>
+</html>
